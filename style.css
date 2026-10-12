@@ -1,0 +1,300 @@
+/* ===== Tokens ===== */
+:root {
+  --bg: #eef1f3;
+  --panel: #ffffff;
+  --ink: #1c2530;
+  --muted: #5d6a78;
+  --line: #d9e0e6;
+  --accent: #2e6b4f;
+  --accent-dark: #225240;
+  --fail: #b03a2e;
+  --pass: #2e6b4f;
+  --focus: #d08a1e;
+  --font-head: Charter, "Bitstream Charter", Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ===== Header ===== */
+.site-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 1.5rem;
+}
+
+.site-header h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin: 0 0 0.4rem;
+}
+
+.site-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ===== Layout (CSS Grid) ===== */
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.panel h2 {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  margin: 0 0 1.1rem;
+}
+
+/* ===== Form ===== */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.9rem;
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.field input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #b9c4cd;
+  border-radius: 6px;
+  font: inherit;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(46, 107, 79, 0.18);
+}
+
+.field input.invalid {
+  border-color: var(--fail);
+}
+
+.error {
+  min-height: 1em;
+  color: var(--fail);
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+
+.marks {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.marks legend {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  padding: 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.65rem 1.1rem;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn.ghost {
+  background: transparent;
+  border-color: #b9c4cd;
+  color: var(--ink);
+}
+
+.btn.ghost:hover {
+  background: var(--bg);
+}
+
+.form-message {
+  margin: 0.9rem 0 0;
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.form-message.error-text {
+  color: var(--fail);
+}
+
+/* ===== Table ===== */
+.table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.table-head h2 {
+  margin: 0;
+}
+
+.count {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.7rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+th {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+td.num,
+th.num {
+  text-align: right;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status.pass {
+  background: #e3f1ea;
+  color: var(--pass);
+}
+
+.status.fail {
+  background: #f8e4e1;
+  color: var(--fail);
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.remove-btn:hover {
+  color: var(--fail);
+}
+
+.empty-row td {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem 0.6rem;
+}
+
+/* Row entrance: shows the newly added row */
+tr.new-row {
+  animation: highlight 1.4s ease;
+}
+
+@keyframes highlight {
+  from { background: #fff4d6; }
+  to   { background: transparent; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
